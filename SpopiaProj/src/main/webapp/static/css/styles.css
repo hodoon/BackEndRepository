@@ -1,0 +1,103 @@
+/* /css/styles.css */
+
+/* 기본적인 레이아웃 스타일 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.layout{
+  width: 1000px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid red
+}
+
+/* 메뉴 아이콘, 로고, 검색바, 마이페이지 아이콘에 대한 마진 설정 */
+.menu-icon, .logo, .search-bar, .my-page-icon {
+  margin: 0 10px;
+}
+
+/* 로고 크기 설정 */
+.logo img {
+  width: 117px; /* 로고 가로 크기 */
+  height: 27px; /* 로고 세로 크기 */
+}
+
+/* 메뉴 아이콘 및 마이페이지 아이콘 크기 수정 */
+.menu-icon img, .my-page-icon img {
+  width: 24px;  /* 아이콘 가로 크기 */
+  height: 24px; /* 아이콘 세로 크기 */
+}
+
+/* 검색바 스타일 */
+.search-box {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 26px;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  background-color: #cccccc;
+  color: #949BA0;
+  height: 40px;
+  padding: 10px;
+  border-radius: 40px;
+}
+
+.search-box input::placeholder {
+  color: #c0c0c0;
+}
+
+.search-box:hover > form .search-txt {
+  width: 200px;
+}
+
+.search-box > form .search-txt:focus {
+  width: 200px;
+}
+
+.search-box:hover > form .search-btn {
+  background: #464E54;
+}
+
+.search-btn {
+  color: #EDEDED;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 60%;
+  background: #949BA0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-txt {
+  float: left;
+  padding: 0;
+  background: none;
+  border: none;
+  outline: none;
+  color: black;
+  font-size: 15px;
+  line-height: 40px;
+  width: 0;
+  transition: 0.5s;
+}
+
+.menu-left{
+  display: flex;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+}
