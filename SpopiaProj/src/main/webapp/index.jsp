@@ -9,6 +9,7 @@
 <body>
 <div class="layout">
   <%@ include file="/header.jsp"%>
+  <%@ include file="body.jsp"%>
     <div class="content">
     </div>
   <%@ include file="footer.jsp"%>
