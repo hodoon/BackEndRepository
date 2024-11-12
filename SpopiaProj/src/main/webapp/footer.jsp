@@ -38,6 +38,7 @@
 	        <li><a href="축구.jsp" style="color: #aaa; text-decoration: none;">축구</a></li>
 	        <li><a href="농구.jsp" style="color: #aaa; text-decoration: none;">농구</a></li>
 	        <li><a href="야구.jsp" style="color: #aaa; text-decoration: none;">야구</a></li>
+			<li><a href="배드민턴.jsp" style="color: #aaa; text-decoration: none;">배드민턴</a></li>
 	    </ul>
 	</div>
 	

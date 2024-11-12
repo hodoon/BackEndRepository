@@ -1,5 +1,16 @@
 /* /css/styles.css */
 
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');}
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 500;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Medium.otf) format('opentype');}
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 700;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Bold.otf) format('opentype');}
+@font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 900;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Black.otf) format('opentype');}
+
+body, h1, h2, h3, h4, h5, h6, input, textarea, select {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
 /* 기본적인 레이아웃 스타일 */
 * {
   margin: 0;
@@ -17,8 +28,30 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  border: 1px solid red
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
+
+/* 메인 메뉴 컨테이너 */
+.main-menu-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.menu-left{
+  display: flex;
+  align-items: center;
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* 오른쪽 정렬 */
+}
+
 
 /* 메뉴 아이콘, 로고, 검색바, 마이페이지 아이콘에 대한 마진 설정 */
 .menu-icon, .logo, .search-bar, .my-page-icon {
@@ -37,43 +70,86 @@ header {
   height: 24px; /* 아이콘 세로 크기 */
 }
 
+/* 스포츠 메뉴 스타일 */
+.sports-menu {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  gap: 15px;
+  padding: 10px 0;
+  font-size: 18px; /* 글자 크기 18px */
+  color: #555;
+  border-top: 1px solid #ddd; /* 구분선 */
+}
+
+.sports-menu span {
+  cursor: pointer;
+}
+
+.sports-menu span:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* 클릭 시 굵게 표시 */
+.sports-menu span:active {
+  font-weight: bold;
+}
+
+.sports-menu span:hover {
+  color: #333;
+}
+
+/* 선택된 메뉴 항목의 굵기 설정 */
+.sports-menu .active {
+  font-weight: bold;
+  color: #333; /* 클릭된 상태의 색상 */
+}
+
+/* 하위 메뉴 스타일 */
+.sub-menu {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  gap: 15px;
+  padding: 10px 0;
+  font-size: 16px; /* 글자 크기 16px */
+  color: #555;
+  border-top: 1px solid #ddd; /* 구분선 */
+  padding-left: 20px; /* sports-menu와 정렬 맞추기 */
+}
+
+.sub-menu span {
+  cursor: pointer;
+}
+
+.sub-menu span:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* 선택된 메뉴 항목의 굵기 설정 */
+.sub-menu .active {
+  font-weight: bold;
+  color: #333; /* 클릭된 상태의 색상 */
+}
+
+
 /* 검색바 스타일 */
 .search-box {
   display: flex;
-  align-items: center;
-  position: absolute;
-  top: 26px;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  background-color: #cccccc;
-  color: #949BA0;
+  background-color: #cacaca;
   height: 40px;
-  padding: 10px;
+  padding: 25px;
   border-radius: 40px;
+  align-items: center;
+  justify-content: center;
 }
 
-.search-box input::placeholder {
-  color: #c0c0c0;
-}
-
-.search-box:hover > form .search-txt {
-  width: 200px;
-}
-
-.search-box > form .search-txt:focus {
-  width: 200px;
-}
-
-.search-box:hover > form .search-btn {
-  background: #464E54;
-}
-
-.search-btn {
+.search-btn{
   color: #EDEDED;
   float: right;
   width: 40px;
   height: 40px;
-  border-radius: 60%;
+  border-radius: 50%;
   background: #949BA0;
   display: flex;
   align-items: center;
@@ -89,15 +165,6 @@ header {
   color: black;
   font-size: 15px;
   line-height: 40px;
-  width: 0;
-  transition: 0.5s;
-}
-
-.menu-left{
   display: flex;
 }
 
-.menu-right {
-  display: flex;
-  align-items: center;
-}

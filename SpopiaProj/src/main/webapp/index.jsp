@@ -8,10 +8,10 @@
 </head>
 <body>
 <div class="layout">
-  <%@ include file="page/header.jsp"%>
+  <%@ include file="/header.jsp"%>
     <div class="content">
     </div>
-  <%@ include file="page/footer.jsp"%>
+  <%@ include file="footer.jsp"%>
 
 </div>
 </body>
