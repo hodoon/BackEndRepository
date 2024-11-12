@@ -21,6 +21,8 @@ body, h1, h2, h3, h4, h5, h6, input, textarea, select {
 .layout{
   width: 1000px;
   margin: 0 auto;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 header {
@@ -28,8 +30,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+
 }
 
 /* 메인 메뉴 컨테이너 */
@@ -166,5 +167,79 @@ header {
   font-size: 15px;
   line-height: 40px;
   display: flex;
+}
+
+.date-container {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* 경기 목록 스타일 */
+.match-list-container {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.match-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.match-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.match-time {
+  font-weight: bold;
+  color: #555;
+  width: 80px;
+}
+
+.match-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.match-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.match-location {
+  font-size: 14px;
+  color: #777;
+}
+
+.no-matches {
+  color: #999;
+  text-align: center;
+  padding: 10px;
+}
+
+
+/* 날짜 선택 스타일 */
+.date-selection {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.date-list {
+  display: flex;
+  gap: 10px;
+}
+
+.date-item {
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.date-item.active {
+  font-weight: bold;
+  color: #333;
 }
 
