@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Welcome%>!</h1>
-<a href="/logout">Logout</a>
+<a href="auth/logout">Logout</a>
 </body>
 </html>
 
