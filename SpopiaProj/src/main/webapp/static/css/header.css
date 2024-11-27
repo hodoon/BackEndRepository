@@ -1,0 +1,118 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+
+}
+
+/* 메인 메뉴 컨테이너 */
+.main-menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.menu-left{
+    display: flex;
+    align-items: center;
+}
+
+.menu-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+/* 로고 크기 설정 */
+.logo img {
+    width: 117px; /* 로고 가로 크기 */
+    height: 27px; /* 로고 세로 크기 */
+}
+
+/* 메뉴 아이콘 및 마이페이지 아이콘 크기 수정 */
+.menu-icon img, .my-page-icon img {
+    width: 24px;  /* 아이콘 가로 크기 */
+    height: 24px; /* 아이콘 세로 크기 */
+}
+
+/* 검색바 스타일 */
+.search-box {
+    display: flex;
+    background-color: #F7F7F7;
+    height: 40px;
+    width: 350px;
+    margin: 0;
+    padding: 0 10px;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.search-btn{
+    display: flex;
+    color: #000000;
+    float: left;
+    width: 24px;
+    height: 24px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+}
+
+.search-txt {
+    float: left;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    color: black;
+    font-size: 15px;
+    line-height: 24px;
+    display: flex;
+}
+
+.calendar-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    margin:10px;
+}
+
+/* 스포츠 메뉴 스타일 */
+.sports-menu {
+    display: flex;
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    gap: 15px;
+    padding: 10px 0;
+    font-size: 18px; /* 글자 크기 18px */
+    color: #555;
+    border-top: 1px solid #ddd; /* 구분선 */
+}
+
+.sports-menu span {
+    cursor: pointer;
+}
+
+.sports-menu span:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+/* 클릭 시 굵게 표시 */
+.sports-menu span:active {
+    font-weight: bold;
+}
+
+.sports-menu span:hover {
+    color: #333;
+}
+
+/* 선택된 메뉴 항목의 굵기 설정 */
+.sports-menu .active {
+    font-weight: bold;
+    color: #333; /* 클릭된 상태의 색상 */
+}

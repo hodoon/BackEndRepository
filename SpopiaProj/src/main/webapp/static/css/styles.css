@@ -1,5 +1,4 @@
 /* /css/styles.css */
-
 @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 100;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Thin.otf) format('opentype');}
 @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 300;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Light.otf) format('opentype');}
 @font-face {font-family: 'Noto Sans KR';font-style: normal;font-weight: 400;src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'),url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');}
@@ -15,156 +14,86 @@ body, h1, h2, h3, h4, h5, h6, input, textarea, select {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  border: 0;
+  vertical-align: baseline;
 }
 
 .layout{
   width: 1000px;
   margin: 0 auto;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-
-}
-
-/* 메인 메뉴 컨테이너 */
-.main-menu-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding-bottom: 10px;
-}
-
-.menu-left{
-  display: flex;
-  align-items: center;
-}
-
-.menu-right {
-  display: flex;
-  align-items: center;
-  margin-left: auto; /* 오른쪽 정렬 */
-}
-
-
-/* 메뉴 아이콘, 로고, 검색바, 마이페이지 아이콘에 대한 마진 설정 */
-.menu-icon, .logo, .search-bar, .my-page-icon {
-  margin: 0 10px;
-}
-
-/* 로고 크기 설정 */
-.logo img {
-  width: 117px; /* 로고 가로 크기 */
-  height: 27px; /* 로고 세로 크기 */
-}
-
-/* 메뉴 아이콘 및 마이페이지 아이콘 크기 수정 */
-.menu-icon img, .my-page-icon img {
-  width: 24px;  /* 아이콘 가로 크기 */
-  height: 24px; /* 아이콘 세로 크기 */
-}
-
-/* 스포츠 메뉴 스타일 */
-.sports-menu {
-  display: flex;
-  justify-content: flex-start; /* 왼쪽 정렬 */
-  gap: 15px;
-  padding: 10px 0;
-  font-size: 18px; /* 글자 크기 18px */
-  color: #555;
-  border-top: 1px solid #ddd; /* 구분선 */
-}
-
-.sports-menu span {
-  cursor: pointer;
-}
-
-.sports-menu span:hover {
-  color: #333;
-  text-decoration: underline;
-}
-
-/* 클릭 시 굵게 표시 */
-.sports-menu span:active {
-  font-weight: bold;
-}
-
-.sports-menu span:hover {
-  color: #333;
-}
-
-/* 선택된 메뉴 항목의 굵기 설정 */
-.sports-menu .active {
-  font-weight: bold;
-  color: #333; /* 클릭된 상태의 색상 */
-}
-
-/* 하위 메뉴 스타일 */
-.sub-menu {
-  display: flex;
-  justify-content: flex-start; /* 왼쪽 정렬 */
-  gap: 15px;
-  padding: 10px 0;
-  font-size: 16px; /* 글자 크기 16px */
-  color: #555;
-  border-top: 1px solid #ddd; /* 구분선 */
-  padding-left: 20px; /* sports-menu와 정렬 맞추기 */
-}
-
-.sub-menu span {
-  cursor: pointer;
-}
-
-.sub-menu span:hover {
-  color: #333;
-  text-decoration: underline;
-}
-
-/* 선택된 메뉴 항목의 굵기 설정 */
-.sub-menu .active {
-  font-weight: bold;
-  color: #333; /* 클릭된 상태의 색상 */
-}
-
-
-/* 검색바 스타일 */
-.search-box {
-  display: flex;
-  background-color: #cacaca;
-  height: 40px;
-  padding: 25px;
-  border-radius: 40px;
-  align-items: center;
   justify-content: center;
 }
 
-.search-btn{
-  color: #EDEDED;
-  float: right;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #949BA0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+
+select {
+  color: #676d7e;
+  border: 1px solid #b9becb;
+  background-color: #fff;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+
 }
 
-.search-txt {
-  float: left;
+
+[type=checkbox] select {
+  position: absolute;
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+  width: inherit;
+  margin: 0
+}
+
+[type=checkbox]+label:before {
+  content: "";
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 22px;
+  height: 22px;
+  background: #e6ecf1;
+  border-radius: 6px;
+  border: 1px solid #d9e0e6
+}
+
+[type=checkbox]+label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
   padding: 0;
-  background: none;
-  border: none;
-  outline: none;
-  color: black;
-  font-size: 15px;
-  line-height: 40px;
-  display: flex;
+  font-size: 16px;
+  color: #282b33;
+  font-weight: 400
 }
+
+[type=checkbox]:checked+label:before {
+  background: #1570ff;
+  border: 1px solid #1570ff
+}
+
+[type=checkbox]:checked+label:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 11px;
+  background: #e6ecf1;
+  width: 2px;
+  height: 2px;
+  box-shadow: 0px 0 0 #fff,2px 0 0 #fff,4px 0 0 #fff,4px -2px 0 #fff,4px -4px 0 #fff,4px -6px 0 #fff,4px -8px 0 #fff,4px -10px 0 #fff;
+  transform: rotate(45deg)
+}
+
+
+
+
+
+
+
+
+
 
 
