@@ -59,8 +59,8 @@
                             <label class="auth-register__input--title">성별</label>
                             <select name="sex" type="number" id="id_sex" class="inputFull">
                                 <option value="0">성별을 선택하세요</option>
-                                <option value="1">남성</option>
-                                <option value="-1">여성</option>
+                                <option value="M">남성</option>
+                                <option value="F">여성</option>
                             </select>
                             <div class="auth-register__input--message-wrap">
                                 <p></p>
