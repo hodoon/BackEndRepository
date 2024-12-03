@@ -11,7 +11,9 @@
       <div class="menu-left">
         <!-- 로고 (메뉴 아이콘 오른쪽) -->
         <div class="logo">
-          <img src="${pageContext.request.contextPath}/static/images/ic_spopiaLogo.svg" alt="Logo">
+          <a href="${pageContext.request.contextPath}/index.jsp">
+            <img src="${pageContext.request.contextPath}/static/images/ic_spopiaLogo.svg" alt="Logo">
+          </a>
         </div>
       </div>
       <!-- 검색바 (맨 오른쪽) -->

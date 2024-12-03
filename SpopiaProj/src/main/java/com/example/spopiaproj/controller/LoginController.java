@@ -21,7 +21,8 @@ public class LoginController extends HttpServlet {
         String email = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if(email == null || password == null || email.isEmpty() || password.isEmpty()) {
+        // 입력 값 검증
+        if (email == null || password == null || email.isEmpty() || password.isEmpty()) {
             response.sendRedirect("/login.jsp?error=empty_fields");
             return;
         }
@@ -30,17 +31,18 @@ public class LoginController extends HttpServlet {
             String query = "SELECT u.userEmail, u.userName, r.roleName " +
                     "FROM usertbl u " +
                     "JOIN user_role ur ON u.userEmail = ur.userEmail " +
-                    "JOIN roletbl r ON ur.roleId = r.roleId " + // 공백 추가
+                    "JOIN roletbl r ON ur.roleId = r.roleId " +
                     "WHERE u.userEmail = ? AND u.userPassword = ?";
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, email);
             pstmt.setString(2, password);
             ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()){
+            if (rs.next()) {
                 String userName = rs.getString("userName");
                 String roleName = rs.getString("roleName");
 
+                // 세션 설정
                 HttpSession session = request.getSession();
                 session.setAttribute("userEmail", email);
                 session.setAttribute("userName", userName);
@@ -48,10 +50,15 @@ public class LoginController extends HttpServlet {
 
                 System.out.println("[DEBUG] User logged in: " + email + ", Role: " + roleName);
 
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                // 역할에 따라 페이지 리다이렉션
+                if ("ADMIN".equalsIgnoreCase(roleName)) {
+                    response.sendRedirect(request.getContextPath() + "/admin/users");
+                } else {
+                    response.sendRedirect(request.getContextPath() + "/index.jsp");
+                }
             } else {
                 System.err.println("[ERROR] Invalid login attempt: " + email);
-                response.sendRedirect(request.getContextPath() + "/views/loginPage.jsp");
+                response.sendRedirect(request.getContextPath() + "/login.jsp?error=invalid_credentials");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
