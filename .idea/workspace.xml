@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a78f315-f606-49b9-8bc0-9859c203b541" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/SpopiaProj/src/main/webapp/views/body.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/SpopiaProj/src/main/webapp/views/body.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="2a78f315-f606-49b9-8bc0-9859c203b541" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +200,7 @@
       <workItem from="1732672240686" duration="3640000" />
       <workItem from="1733190229662" duration="11000" />
       <workItem from="1733190247043" duration="1085000" />
-      <workItem from="1733275447531" duration="5654000" />
+      <workItem from="1733275447531" duration="5974000" />
     </task>
     <servers />
   </component>
