@@ -1,0 +1,131 @@
+/* 기본 설정 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 페이지 전체 컨테이너 */
+.calPage {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* 왼쪽과 오른쪽 레이아웃 */
+.pageLeft, .pageRight {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pageLeft {
+    border-right: 1px solid #e9ecef;
+}
+
+.pageRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 캘린더 콘텐츠 */
+.calContent {
+    width: 100%;
+}
+
+.calHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calHeader button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.calHeader button:hover {
+    background-color: #0056b3;
+}
+
+.dateInfo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 캘린더 테이블 */
+.calTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.calTable th, .calTable td {
+    padding: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.calTable th {
+    background-color: #f1f3f5;
+    color: #495057;
+}
+
+.calTable td {
+    height: 80px;
+    vertical-align: top;
+}
+
+.calTable .sun {
+    color: #e03131;
+}
+
+.calTable .sat {
+    color: #1c7ed6;
+}
+
+/* 날짜 정보 */
+.dayInfo {
+    text-align: center;
+    font-size: 16px;
+}
+
+.dayInfo span {
+    display: block;
+    color: #343a40;
+}
+
+/* 반응형 처리 */
+@media (max-width: 768px) {
+    .calPage {
+        flex-direction: column;
+    }
+
+    .pageLeft, .pageRight {
+        border: none;
+        padding: 10px;
+    }
+
+    .calHeader {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calHeader button {
+        margin: 5px 0;
+    }
+}
