@@ -31,4 +31,8 @@ public class AdminUserService {
     public boolean updateUser(UserDto user) {
         return adminUserDAO.editUser(user);
     }
+
+    public UserDto getUserByEmail(String userEmail) {
+        return adminUserDAO.getUserByEmail(userEmail);
+    }
 }

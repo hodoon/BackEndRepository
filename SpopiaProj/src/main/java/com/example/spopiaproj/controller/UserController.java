@@ -40,9 +40,9 @@ public class UserController extends HttpServlet {
             return;
         }
 
-        char sex;
+        String sex;
         try {
-            sex = sexParam.charAt(0);
+            sex = sexParam;
         } catch (Exception e) {
             System.err.println("[ERROR] Invalid gender parameter.");
             response.sendRedirect("/error.jsp");

@@ -26,6 +26,8 @@ dependencies {
 
   implementation 'javax.servlet:jstl:1.2'
   implementation 'mysql:mysql-connector-java:8.0.33'
+  implementation('org.apache.tomcat.embed:tomcat-embed-core:9.0.96')
+  implementation('org.apache.tomcat.embed:tomcat-embed-jasper:9.0.96')
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

@@ -42,8 +42,14 @@
                         <td>${user.birthDate}</td>
                         <td>${user.phone}</td>
                         <td>
-                            <button onclick="editUser('${user.email}')">수정</button>
-                            <button onclick="deleteUser('${user.email}')">삭제</button>
+                            <form action="${pageContext.request.contextPath}/admin/editUser" method="GET" style="display: inline;">
+                                <input type="hidden" name="userEmail" value="${user.email}">
+                                <button type="submit" onclick="return confirm('사용자를 수정하시겠습니까?')">수정</button>
+                            </form>
+                            <form action="${pageContext.request.contextPath}/admin/deleteUser" method="GET" style="display:inline;">
+                                <input type="hidden" name="userEmail" value="${user.email}">
+                                <button type="submit" onclick="return confirm('사용자를 삭제하시겠습니까?')">삭제</button>
+                            </form>
                         </td>
                     </tr>
                 </c:forEach>
@@ -84,18 +90,5 @@
         </section>
     </div>
 </main>
-<script>
-    function editUser(userEmail) {
-        const url = `${window.location.origin}${pageContext.request.contextPath}/admin/editUser?userEmail=${userEmail}`;
-        window.location.href = url;
-    }
-
-    function deleteUser(userEmail) {
-        if (confirm('사용자를 삭제하시겠습니까?')) {
-            const url = `${window.location.origin}${pageContext.request.contextPath}/admin/deleteUser?userEmail=${userEmail}`;
-            window.location.href = url;
-        }
-    }
-</script>
 </body>
 </html>

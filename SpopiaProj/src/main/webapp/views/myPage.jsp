@@ -78,6 +78,7 @@
     </style>
 </head>
 <body>
+=======
     <div class="menu-container">
     <div class="section_title">나의 스포피아</div>
 	    <ul>
