@@ -61,7 +61,7 @@ function xmlToJson(xml) {
 // API 데이터 가져오기
 async function fetchEventsFromAPI(region = null) {
     const apiUrl =
-        "http://openapi.seoul.go.kr:8088/517474446f68726f31313165546a7562/xml/ListPublicReservationSport/1/10/";
+        "http://openapi.seoul.go.kr:8088/517474446f68726f31313165546a7562/xml/ListPublicReservationSport/1/5/%ED%92%8B%EC%82%B4%EC%9E%A5";
     try {
         const response = await fetch(apiUrl);
         const xml = await response.text(); // XML 형식으로 받아오기
@@ -79,18 +79,30 @@ async function fetchEventsFromAPI(region = null) {
 }
 
 // 이벤트 생성
-function createEventItem({ time, location, gender }) {
+function createEventItem({ time, location, gender, isFull }) {
     const eventItem = document.createElement("div");
     eventItem.className = "listItem";
+
+    // 신청 가능 여부에 따라 버튼 텍스트 설정
+    const availableButton = isFull ?
+        `<button class="closed">마감</button>` :
+        `<button class="available">신청 가능</button>`;
 
     eventItem.innerHTML = `
     <p>${time}</p>
     <h3>${location}</h3>
     <p>${gender}</p>
     <div class="btn-group">
-      <button>신청 가능</button>
+      ${availableButton}
     </div>
   `;
+
+    const button = eventItem.querySelector("button");
+    if (button && !isFull) {
+        button.addEventListener("click", () => {
+            window.location.href = "views/apply.jsp"; // apply.jsp로 리다이렉트
+        });
+    }
 
     return eventItem;
 }
