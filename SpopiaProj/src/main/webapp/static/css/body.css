@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.dateWrap {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.dateSlider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.prevBtn,
+.nextBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prevBtn:hover,
+.nextBtn:hover {
+    background-color: #0056b3;
+}
+
+.dateWrap {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    justify-content: space-between;
+    width: 80%; /* 날짜 리스트의 넓이 */
+}
+
+.dataList {
+    list-style: none;
+    margin: 0 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dataList p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dataList span {
+    font-size: 14px;
+    color: #666;
+}
+
+.dataList:hover {
+    color: #007bff;
+    font-weight: bold;
+}
+.dataList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    /*border: 1px solid;*/
+    width: 150px;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.dataList:hover {
+    background-color: blue;
+    color: white;
+
+}
+
+.cateWrap {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.cateList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+
+}
+.listWrap {
+    /*padding: 20px;*/
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+
+}
+.listItem {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.listItem h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+.listItem p {
+    margin: 0;
+    color: #666;
+}
+.btn-group{
+    justify-items: right;
+    margin-left: 800px;
+    margin-top:-50px
+}
+.btn-group button{
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    border: solid 1px blue;
+    outline: none;
+    border-radius: 20px;
+    background-color: inherit ;
+    cursor: pointer;
+}
