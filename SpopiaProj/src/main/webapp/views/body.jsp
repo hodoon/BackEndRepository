@@ -4,189 +4,64 @@
   <meta charset="UTF-8">
   <title>Layout Example</title>
   <link rel="stylesheet" href="static/css/body.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-    .dateWrap {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-
-    }
-
-    .dataList {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 30px;
-      /*border: 1px solid;*/
-      width: 150px;
-      border-radius: 30px;
-      padding: 10px;
-      margin-top: 20px;
-    }
-
-    .dataList:hover {
-      background-color: blue;
-      color: white;
-
-    }
-
-    .cateWrap {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-    }
-    .cateList {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 30px;
-
-    }
-    .listWrap {
-      /*padding: 20px;*/
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-
-
-    }
-    .listItem {
-      padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background-color: #f9f9f9;
-    }
-    .listItem h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.2em;
-    }
-    .listItem p {
-      margin: 0;
-      color: #666;
-    }
-    .btn-group{
-      justify-items: right;
-      margin-left: 800px;
-      margin-top:-50px
-    }
-  </style>
+  <script src="dynamic/body.js"></script>
 </head>
 <body>
 <div class="container">
-  <div class="dateWrap">
-    <li class="dataList"><p style="font-size: 18px;font-weight: bold;">12</p><span>화</span></li>
-    <li class="dataList"><p style="font-size: 18px;font-weight: bold;">13</p><span>수</span></li>
-    <li class="dataList"><p style="font-size: 18px;font-weight: bold;">14</p><span>목</span></li>
-    <li class="dataList"><p style="font-size: 18px;font-weight: bold;">15</p><span>금</span></li>
-    <li class="dataList"><p style="font-size: 18px;font-weight: bold;">16</p><span>토</span></li>
-    <li class="dataList"><p style="font-size: 18px;font-weight: bold;">17</p><span>일</span></li>
+  <div class="dateSlider">
+    <button class="prevBtn">&lt;</button>
+    <div class="dateWrap" id="dateWrap"></div>
+    <button class="nextBtn">&gt;</button>
   </div>
   <div class="cateWrap">
-    <li class="cateList"><p>지역</p></li>
-    <li class="cateList"><p>성별</p></li>
-    <li class="cateList"><p>나이</p></li>
-    <li class="cateList"><p>종목</p></li>
+    <li class="cateList">
+      <select name="region">
+        <option>지역</option>
+        <option value="gangnam">강남구</option>
+        <option value="gangdong">강동구</option>
+        <option value="gangbuk">강북구</option>
+        <option value="gangseo">강서구</option>
+        <option value="gwanak">관악구</option>
+        <option value="gwangjin">광진구</option>
+        <option value="guro">구로구</option>
+        <option value="geumcheon">금천구</option>
+        <option value="nowon">노원구</option>
+        <option value="dobong">도봉구</option>
+        <option value="ddm">동대문구</option>
+        <option value="gongjak">동작구</option>
+        <option value="mapo">마포구</option>
+        <option value="sdm">서대문구</option>
+        <option value="seocho">서초구</option>
+        <option value="sd">성동구</option>
+        <option value="sb">성북구</option>
+        <option value="songpa">송파구</option>
+        <option value="yangcheon">양천구</option>
+        <option value="ydp">영등포구</option>
+        <option value="yongsan">용산구</option>
+        <option value="ep">은평구</option>
+        <option value="jongno">종로구</option>
+        <option value="junggu">중구</option>
+        <option value="jungnang">중랑구</option>
+      </select>
+    </li>
+    <li class="cateList">
+      <select name="gender">
+        <option>성별</option>
+        <option value="male">남성</option>
+        <option value="female">여성</option>
+      </select>
+    </li>
+    <li class="cateList">
+      <select name="age">
+        <option>나이</option>
+        <option value="10s">10대</option>
+        <option value="20s">20대</option>
+        <option value="30s">30대</option>
+        <option value="40s">40대</option>
+        <option value="50s">50대 이상</option>
+      </select>
+    </li>
   </div>
-  <div class="listWrap">
-    <div class="listItem">
-      <p>15:00</p>
-      <h3>서울 은평 롯데몰 B구장</h3>
-      <p>남녀모두</p>
-      <div class="btn-group">
-        <button style="width: 100px;
-        height: 50px;
-        font-size: 20px;
-        border: solid 1px blue;
-        outline: none;
-        border-radius: 20px;
-        background-color: inherit ;
-        cursor: pointer;">신청 가능</button>
-      </div>
-    </div>
-    <div class="listItem">
-      <p>16:00</p>
-      <h3>서울 도봉 루다 풋살장</h3>
-      <p>남자</p>
-      <div class="btn-group">
-        <button style="width: 100px;
-        height: 50px;
-        font-size: 20px;
-        border: solid 1px blue;
-        outline: none;
-        border-radius: 20px;
-        background-color: inherit ;
-        cursor: pointer;">신청 가능</button>
-      </div>
-    </div>
-    <div class="listItem">
-      <p>18:00</p>
-      <h3>서울 강서 KBS 스포츠월드 야외 *주차 3자리*</h3>
-      <p>여자</p>
-      <div class="btn-group">
-        <button style="width: 100px;
-        height: 50px;
-        font-size: 20px;
-        border: solid 1px blue;
-        outline: none;
-        border-radius: 20px;
-        background-color: inherit ;
-        cursor: pointer;">신청 가능</button>
-      </div>
-    </div>
-    <div class="listItem">
-      <p>15:00</p>
-      <h3>서울 은평 롯데몰 B구장</h3>
-      <p>남녀모두</p>
-      <div class="btn-group">
-        <button style="width: 100px;
-        height: 50px;
-        font-size: 20px;
-        border: solid 1px blue;
-        outline: none;
-        border-radius: 20px;
-        background-color: inherit ;
-        cursor: pointer;">신청 가능</button>
-      </div>
-    </div>
-    <div class="listItem">
-      <p>15:00</p>
-      <h3>서울 은평 롯데몰 B구장</h3>
-      <p>남녀모두</p>
-      <div class="btn-group">
-        <button style="width: 100px;
-        height: 50px;
-        font-size: 20px;
-        border: solid 1px blue;
-        outline: none;
-        border-radius: 20px;
-        background-color: inherit ;
-        cursor: pointer;">신청 가능</button>
-      </div>
-    </div>
-    <div class="listItem">
-      <p>15:00</p>
-      <h3>서울 은평 롯데몰 B구장</h3>
-      <p>남녀모두</p>
-      <div class="btn-group">
-        <button style="width: 100px;
-        height: 50px;
-        font-size: 20px;
-        border: solid 1px blue;
-        outline: none;
-        border-radius: 20px;
-        background-color: inherit ;
-        cursor: pointer;">신청 가능</button>
-      </div>
-    </div>
-  </div>
+  <div class="listWrap"></div>
 </div>
 </body>
