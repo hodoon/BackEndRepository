@@ -1,0 +1,140 @@
+/* 공통 스타일 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+/* 상단 메뉴 스타일 */
+.menu {
+    background-color: #34495e;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    background-color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* 메인 섹션 스타일 */
+.section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.section ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+
+
+/* 친구 목록 테이블 스타일 */
+.friend-list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.friend-list table th,
+.friend-list table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.friend-list table th {
+    background-color: #34495e;
+    color: white;
+    font-weight: bold;
+}
+
+.friend-list table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.friend-list table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.friend-list table td button {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.friend-list table td button:hover {
+    background-color: #c0392b;
+}
+
+/* 버튼 스타일 */
+form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+form button:hover {
+    background-color: #2980b9;
+}
+
+form button:focus {
+    outline: none;
+}
+
+/* 경고 버튼 */
+form button[onclick] {
+    background-color: #e74c3c;
+}
+
+form button[onclick]:hover {
+    background-color: #c0392b;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #333;
+    margin-right: 10px;
+    border: 1px solid transparent;
+}
+
+.menu a.active {
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+}
+
+.menu a:hover {
+    color: #007bff;
+}

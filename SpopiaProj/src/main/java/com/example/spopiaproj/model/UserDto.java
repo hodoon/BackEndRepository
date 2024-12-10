@@ -7,7 +7,7 @@ public class UserDto {
     private String password;
     private String name;
     private String nickname;
-    private char sex;
+    private String sex;
     private Date birthDate;
     private String phone;
 
@@ -43,11 +43,11 @@ public class UserDto {
         this.nickname = nickname;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -65,5 +65,18 @@ public class UserDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", sex=" + sex +
+                ", birthDate=" + birthDate +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }

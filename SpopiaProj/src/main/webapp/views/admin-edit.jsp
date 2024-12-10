@@ -1,3 +1,5 @@
+<%@ page import="com.example.spopiaproj.model.UserDto" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,10 +59,15 @@
     <div class="admin-container">
         <h1>사용자 수정</h1>
 
+        <%
+            System.out.println("sex: " +((UserDto) request.getAttribute("user")).getSex());
+        %>
+
         <section class="edit-user">
             <form id="editUserForm" action="${pageContext.request.contextPath}/admin/editUser" method="POST">
                 <!-- Hidden input to hold userEmail for identification -->
                 <input type="hidden" id="userEmail" name="userEmail" value="${user.email}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
                 <label for="userName">이름:</label>
                 <input type="text" id="userName" name="userName" value="${user.name}" required>
@@ -68,17 +75,17 @@
                 <label for="userNickname">닉네임:</label>
                 <input type="text" id="userNickname" name="userNickname" value="${user.nickname}" required>
 
-                <label for="userSex">성별:</label>
-                <select id="userSex" name="userSex" required>
-                    <option value="M" ${user.sex == 'M' ? 'selected' : ''}>남성</option>
-                    <option value="F" ${user.sex == 'F' ? 'selected' : ''}>여성</option>
-                </select>
-
                 <label for="userBirth">생년월일:</label>
-                <input type="date" id="userBirth" name="userBirth" value="${user.birth}" required>
+                <input type="date" id="userBirth" name="userBirth" value="${user.birthDate}" required>
 
                 <label for="userTel">전화번호:</label>
-                <input type="text" id="userTel" name="userTel" value="${user.tel}" required>
+                <input type="text" id="userTel" name="userTel" value="${user.phone}" required pattern="^\d{3}-\d{3,4}-\d{4}$" title="전화번호 형식은 000-0000-0000이어야 합니다.">
+
+                <label for="userSex">성별:</label>
+                <select id="userSex" name="userSex" required>
+                    <option value="M" <c:if test="${user.sex.equals(\"M\")}">selected</c:if>>남성</option>
+                    <option value="F" <c:if test="${user.sex == 'F'}">selected</c:if>>여성</option>
+                </select>
 
                 <button type="submit">수정 완료</button>
                 <button type="button" onclick="cancelEdit()">취소</button>
@@ -87,8 +94,9 @@
     </div>
 </main>
 <script>
+    const contextPath = "${pageContext.request.contextPath}";
     function cancelEdit() {
-        window.location.href = `${window.location.origin}${pageContext.request.contextPath}/admin/userManagement`;
+        window.location.href = `${contextPath}/admin/userManagement`;
     }
 </script>
 </body>

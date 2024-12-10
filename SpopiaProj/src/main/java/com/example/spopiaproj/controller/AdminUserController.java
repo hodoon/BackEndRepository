@@ -1,7 +1,5 @@
 package com.example.spopiaproj.controller;
 
-
-
 import com.example.spopiaproj.model.UserDto;
 import com.example.spopiaproj.service.AdminUserService;
 
@@ -16,7 +14,7 @@ import java.util.logging.Logger;
 
 import static com.mysql.cj.conf.PropertyKey.logger;
 
-@WebServlet(name = "AdminUserController", urlPatterns = {"/admin/users", "/admin/addUser", "/admin/deleteUser"})
+@WebServlet(name = "AdminUserController", urlPatterns = {"/admin/users", "/admin/addUser", "/admin/deleteUser", "/admin/editUser"})
 public class AdminUserController extends HttpServlet {
     private final AdminUserService adminUserService;
     private static final Logger logger = Logger.getLogger(AdminUserController.class.getName());
@@ -28,8 +26,12 @@ public class AdminUserController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try {
             String action = request.getServletPath();
+            logger.info("Requested action: " + action); // 요청 경로 로깅
 
             switch (action) {
                 case "/admin/users":
@@ -46,6 +48,7 @@ public class AdminUserController extends HttpServlet {
             }
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "An unexpected error occurred.");
+            logger.severe("Exception occurred: " + e.getMessage()); // 에러 메시지 로깅
         }
     }
 
@@ -66,7 +69,7 @@ public class AdminUserController extends HttpServlet {
         user.setPassword(request.getParameter("userPassword"));
         user.setName(request.getParameter("userName"));
         user.setNickname(request.getParameter("userNickname"));
-        user.setSex(request.getParameter("userSex").charAt(0));
+        user.setSex(request.getParameter("userSex"));
         user.setBirthDate(java.sql.Date.valueOf(request.getParameter("userBirth")));
         user.setPhone(request.getParameter("userTel"));
         return user;
@@ -87,7 +90,7 @@ public class AdminUserController extends HttpServlet {
         user.setPassword(request.getParameter("userPassword"));
         user.setName(request.getParameter("userName"));
         user.setNickname(request.getParameter("userNickname"));
-        user.setSex(request.getParameter("userSex").charAt(0));
+        user.setSex(request.getParameter("userSex"));
         user.setBirthDate(java.sql.Date.valueOf(request.getParameter("userBirth")));
         user.setPhone(request.getParameter("userTel"));
 
@@ -112,23 +115,18 @@ public class AdminUserController extends HttpServlet {
         }
     }
 
-    // 사용자 수정
-    private void handleEditUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        UserDto user = new UserDto();
-        user.setEmail(request.getParameter("userEmail"));
-        user.setPassword(request.getParameter("userPassword"));
-        user.setName(request.getParameter("userName"));
-        user.setNickname(request.getParameter("userNickname"));
-        user.setSex(request.getParameter("userSex").charAt(0));
-        user.setBirthDate(java.sql.Date.valueOf(request.getParameter("userBirth")));
-        user.setPhone(request.getParameter("userTel"));
-
-        boolean isUpdated = adminUserService.updateUser(user);
-
-        if (isUpdated) {
-            response.sendRedirect(request.getContextPath() + "/admin/users");
-        } else {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "사용자 수정 중 문제가 발생했습니다.");
+    // 사용자 수정 페이지로 이동
+    private void handleEditUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String userEmail = request.getParameter("userEmail");
+        UserDto user = adminUserService.getUserByEmail(userEmail);
+        if (user == null) {
+            request.setAttribute("errorMessage", "User not found.");
+            request.getRequestDispatcher("/views/error-page.jsp").forward(request, response);
+            return;
         }
+        request.setAttribute("user", user);
+        System.out.println("AdminUserController: user = " + user);
+
+        request.getRequestDispatcher("/views/admin-edit.jsp").forward(request, response);
     }
 }

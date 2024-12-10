@@ -25,7 +25,7 @@ public class AdminUserDao {
                 user.setEmail(rs.getString("userEmail"));
                 user.setName(rs.getString("userName"));
                 user.setNickname(rs.getString("userNickname"));
-                user.setSex(rs.getString("userSex").charAt(0));
+                user.setSex(rs.getString("userSex"));
                 user.setBirthDate(rs.getDate("userBirth"));
                 user.setPhone(rs.getString("userTel"));
 
@@ -109,6 +109,34 @@ public class AdminUserDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public UserDto getUserByEmail(String userEmail) {
+        String query = "SELECT userEmail, userPassword, userName, userNickname, userSex, userBirth, userTel FROM usertbl WHERE userEmail = ?";
+        UserDto user = null; // null로 초기화하여 사용자가 없을 경우 명확히 반환
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, userEmail); // 첫 번째 파라미터 설정
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) { // 사용자가 존재할 경우 객체 생성
+                    user = new UserDto();
+                    user.setEmail(rs.getString("userEmail"));
+                    user.setPassword(rs.getString("userPassword"));
+                    user.setName(rs.getString("userName"));
+                    user.setNickname(rs.getString("userNickname"));
+                    user.setSex(rs.getString("userSex"));
+                    user.setBirthDate(rs.getDate("userBirth"));
+                    user.setPhone(rs.getString("userTel"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching user with email: " + userEmail);
+            e.printStackTrace();
+        }
+        System.out.println("Fetched User: " + user); // Debugging statement
+        return user;
     }
 }
 
