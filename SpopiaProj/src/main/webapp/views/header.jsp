@@ -27,7 +27,9 @@
           </form>
         </div>
         <div class="calendar-icon">
-          <img src="${pageContext.request.contextPath}/static/images/ic_calendar.svg" alt="Calendar">
+          <a href="${pageContext.request.contextPath}/calendar">
+            <img src="${pageContext.request.contextPath}/static/images/ic_calendar.svg" alt="Calendar">
+          </a>
         </div>
         <!-- 마이 페이지 아이콘 (검색바 오른쪽) -->
         <div class="my-page-icon">
