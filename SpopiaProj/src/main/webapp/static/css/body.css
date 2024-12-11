@@ -82,16 +82,14 @@ body {
     font-size: 18px;
     font-weight: bold;
 }
-
 .dataList:hover {
     background-color: blue;
     color: white;
-
 }
-
 .cateWrap {
     display: flex;
     align-items: center;
+    gap: 10px;
     padding: 10px;
 }
 .cateList {
@@ -99,7 +97,32 @@ body {
     flex-direction: column;
     align-items: center;
     margin-right: 30px;
-
+    list-style: none;
+}
+select {
+    appearance: none;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+select:hover {
+    border-color: #888;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
 }
 .listWrap {
     /*padding: 20px;*/
