@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>apply</title>
-  <link rel="stylesheet" href="static/css/apply.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/apply.css">
 <%--  <script src="dynamic/body.js"></script>--%>
 </head>
 <body>
+<div class="layout">
+  <%@ include file="/views/header.jsp" %>
 <div class="matchData">
   <div class="matchHeader"><p>구장 사진</p></div>
   <div class="matchBody">
@@ -46,5 +48,6 @@
       </div>
     </section>
   </div>
+</div>
 </div>
 </body>
