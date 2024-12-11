@@ -13,11 +13,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a78f315-f606-49b9-8bc0-9859c203b541" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpopiaProj/src/main/webapp/static/css/body.css" beforeDir="false" afterPath="$PROJECT_DIR$/SpopiaProj/src/main/webapp/static/css/body.css" afterDir="false" />
-    </list>
+    <list default="true" id="2a78f315-f606-49b9-8bc0-9859c203b541" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -227,7 +223,7 @@
       <workItem from="1733848121540" duration="1303000" />
       <workItem from="1733849430422" duration="176000" />
       <workItem from="1733849611808" duration="8273000" />
-      <workItem from="1733878883104" duration="897000" />
+      <workItem from="1733878883104" duration="1385000" />
     </task>
     <servers />
   </component>

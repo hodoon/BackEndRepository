@@ -27,7 +27,7 @@
           </form>
         </div>
         <div class="calendar-icon">
-          <a href="${pageContext.request.contextPath}/calendar">
+          <a href="${pageContext.request.contextPath}/views/calendar.jsp">
             <img src="${pageContext.request.contextPath}/static/images/ic_calendar.svg" alt="Calendar">
           </a>
         </div>
