@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>apply</title>
-  <link rel="stylesheet" href="static/css/apply.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/apply.css">
 <%--  <script src="dynamic/body.js"></script>--%>
 </head>
 <body>
