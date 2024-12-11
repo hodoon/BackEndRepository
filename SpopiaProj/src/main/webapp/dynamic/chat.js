@@ -1,45 +1,65 @@
-// WebSocket 연결 설정
 const socket = new WebSocket("ws://localhost:8080/ChatingServer");
+const username = "<%= username %>"; // 로그인한 사용자 이름
 
-// 연결 성공 시
-socket.onopen = function() {
+socket.onopen = function () {
     console.log("WebSocket 연결 성공!");
-    addMessage("시스템", "WebSocket 연결됨.");
+    addMessage("시스템", "WebSocket 연결됨.", "system");
 };
 
-// 메시지 수신 시
-socket.onmessage = function(event) {
-    const message = event.data;
-    addMessage("상대방", message);
+socket.onmessage = function (event) {
+    const data = JSON.parse(event.data);
+    const sender = data.sender;
+    const message = data.message;
+
+    // 내가 보낸 메시지인지 확인
+    const messageType = sender === username ? "mine" : "other";
+
+    addMessage(sender, message, messageType);
 };
 
-// 연결 종료 시
-socket.onclose = function() {
+socket.onclose = function () {
     console.log("WebSocket 연결 종료.");
-    addMessage("시스템", "WebSocket 연결이 종료되었습니다.");
+    addMessage("시스템", "WebSocket 연결이 종료되었습니다.", "system");
 };
 
-// 에러 발생 시
-socket.onerror = function(error) {
+socket.onerror = function (error) {
     console.error("WebSocket 에러:", error);
-    addMessage("시스템", "WebSocket 에러가 발생했습니다.");
+    addMessage("시스템", "WebSocket 에러가 발생했습니다.", "system");
 };
 
 // 메시지 전송
-document.getElementById("message-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // 폼 기본 동작 방지
+document.getElementById("message-form").addEventListener("submit", function (event) {
+    event.preventDefault();
     const input = document.getElementById("message-input");
     const message = input.value;
-    socket.send(message); // WebSocket으로 메시지 전송
-    addMessage("나", message); // 채팅창에 표시
-    input.value = ""; // 입력창 초기화
+    const payload = {
+        sender: username,
+        message: message,
+    };
+    socket.send(JSON.stringify(payload));
+    addMessage("나", message, "mine");
+    input.value = "";
 });
 
-// 메시지를 화면에 추가
-function addMessage(sender, message) {
+// 메시지 추가 함수
+function addMessage(sender, message, type) {
     const messages = document.getElementById("messages");
     const messageElement = document.createElement("div");
-    messageElement.textContent = `${sender}: ${message}`;
+    messageElement.classList.add("message", type);
+
+    const senderElement = document.createElement("div");
+    senderElement.textContent = sender;
+    senderElement.style.fontSize = "0.8rem";
+    senderElement.style.color = "#888";
+
+    const contentElement = document.createElement("div");
+    contentElement.textContent = message;
+
+    if (type === "other") {
+        messageElement.appendChild(senderElement); // 발신자 이름 추가
+    }
+    messageElement.appendChild(contentElement);
+
     messages.appendChild(messageElement);
     messages.scrollTop = messages.scrollHeight; // 자동 스크롤
 }
