@@ -53,7 +53,7 @@
 </head>
 <body>
 <header class="layout">
-    <%@ include file="/views/header.jsp" %>
+    <%@ include file="/module/header.jsp" %>
 </header>
 <main class="layout">
     <div class="admin-container">

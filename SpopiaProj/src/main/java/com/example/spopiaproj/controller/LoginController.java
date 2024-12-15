@@ -1,6 +1,8 @@
 package com.example.spopiaproj.controller;
 
-import com.example.spopiaproj.utils.DatabaseConnection;
+import com.example.spopiaproj.service.UserLoginService;
+import com.example.spopiaproj.service.UserService;
+import com.example.spopiaproj.utils.DBConn;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,54 +16,36 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet("/auth/login")
+@WebServlet("/user/loginProc")
 public class LoginController extends HttpServlet {
+    UserService userService = new UserService();
+    UserLoginService userLoginService = new UserLoginService();
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("username");
-        String password = request.getParameter("password");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
+    }
 
-        // 입력 값 검증
-        if (email == null || password == null || email.isEmpty() || password.isEmpty()) {
-            response.sendRedirect("/login.jsp?error=empty_fields");
-            return;
-        }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        HttpSession session = req.getSession();
+        String userEmail = req.getParameter("userEmail");
+        String userPw = req.getParameter("userPw");
 
-        try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "SELECT u.userEmail, u.userName, r.roleName " +
-                    "FROM usertbl u " +
-                    "JOIN user_role ur ON u.userEmail = ur.userEmail " +
-                    "JOIN roletbl r ON ur.roleId = r.roleId " +
-                    "WHERE u.userEmail = ? AND u.userPassword = ?";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, email);
-            pstmt.setString(2, password);
-            ResultSet rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                String userName = rs.getString("userName");
-                String roleName = rs.getString("roleName");
-
-                // 세션 설정
-                HttpSession session = request.getSession();
-                session.setAttribute("userEmail", email);
-                session.setAttribute("userName", userName);
-                session.setAttribute("roleName", roleName);
-
-                System.out.println("[DEBUG] User logged in: " + email + ", Role: " + roleName);
-
-                // 역할에 따라 페이지 리다이렉션
-                if ("ADMIN".equalsIgnoreCase(roleName)) {
-                    response.sendRedirect(request.getContextPath() + "/admin/users");
-                } else {
-                    response.sendRedirect(request.getContextPath() + "/index.jsp");
-                }
-            } else {
-                System.err.println("[ERROR] Invalid login attempt: " + email);
-                response.sendRedirect(request.getContextPath() + "/login.jsp?error=invalid_credentials");
+        // 로그인 로직 수행
+        // 로그인 성공시 메인 페이지, 실패시 다시 로그인 페이지
+        if(userLoginService.loginUser(userEmail, userPw)) {
+            session.setAttribute("isLogin", "true");
+            session.setAttribute("userEmail", userEmail);
+            if(userService.isUserAdmin(userEmail)){
+                session.setAttribute("isAdmin", "true");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            String contextPath = req.getContextPath();
+            resp.sendRedirect(contextPath + "/");
+        } else {
+            session.setAttribute("message", "비밀번호가 틀립니다.");
+            String contextPath = req.getContextPath();
+            resp.sendRedirect(contextPath + "/user/login");
         }
     }
 }

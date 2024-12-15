@@ -18,10 +18,10 @@ public class CheckLoginController extends HttpServlet {
 
         if (userName != null) {
             // 세션에 로그인 정보가 있는 경우 마이페이지로 이동
-            response.sendRedirect(request.getContextPath() + "/views/myPage.jsp");
+            response.sendRedirect(request.getContextPath() + "/user/myPage.jsp");
         } else {
             // 세션에 로그인 정보가 없는 경우 로그인 페이지로 이동
-            response.sendRedirect(request.getContextPath() + "/views/loginPage.jsp");
+            response.sendRedirect(request.getContextPath() + "/user/login.jsp");
         }
     }
 }
