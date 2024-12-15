@@ -13,7 +13,7 @@
   <!-- 헤더 파일 포함 -->
   <%@ include file="/module/header.jsp" %>
   <!-- 캘린더 파일 포함 -->
-  <%@ include file="/calPage.jsp" %>
+  <%@ include file="/calendar/calPage.jsp" %>
 </div>
 </body>
 </html>

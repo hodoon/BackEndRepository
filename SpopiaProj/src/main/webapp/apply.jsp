@@ -9,6 +9,6 @@
 <body>
 <div>
   <%@ include file="/module/header.jsp" %>
-  <%@ include file="/macthInfo.jsp" %>
+  <%@ include file="/calendar/macthInfo.jsp" %>
 </div>
 </body>
