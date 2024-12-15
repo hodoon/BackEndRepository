@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <title>apply</title>
 <%--  <script src="dynamic/body.js"></script>--%>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/apply.css">
+  <link rel="stylesheet" href="css/apply.css">
 </head>
 <body>
-<div class="layout">
+<div>
   <%@ include file="/module/header.jsp" %>
-  <%@ include file="/module/macthInfo.jsp" %>
+  <%@ include file="/macthInfo.jsp" %>
 </div>
 </body>
