@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Layout Example</title>
-  <link rel="stylesheet" href="static/css/body.css">
-  <script src="dynamic/body.js"></script>
+  <link rel="stylesheet" href="./css/body.css">
+  <script src="./dynamic/body.js"></script>
 </head>
 <body>
 <div class="container">

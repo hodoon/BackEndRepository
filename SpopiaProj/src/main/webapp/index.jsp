@@ -5,21 +5,30 @@
 <head>
   <meta charset="UTF-8">
   <title>JSP - Hello World</title>
-  <link rel="stylesheet" href="static/css/styles.css">
+  <style>
+    .layout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;  /* Set max width */
+      margin: 0 auto;     /* Center the layout */
+      width: 100%;        /* Ensure it takes up full available width */
+    }
+  </style>
 </head>
 <body>
 <div class="layout">
   <!-- 헤더 파일 포함 -->
-  <%@ include file="views/header.jsp" %>
+  <%@ include file="/module/header.jsp" %>
 
   <!-- 스포츠 메뉴 파일 포함 -->
-  <%@ include file="views/sportsMenu.jsp" %>
+  <%@ include file="sportsMenu.jsp" %>
 
   <!-- 본문 파일 포함 -->
-  <%@ include file="views/body.jsp" %>
+  <%@ include file="/module/body.jsp" %>
 
   <!-- 푸터 파일 포함 -->
-  <%@ include file="views/footer.jsp" %>
+  <%@ include file="/module/footer.jsp" %>
 </div>
 </body>
 </html>

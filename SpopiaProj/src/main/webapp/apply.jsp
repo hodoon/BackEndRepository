@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>apply</title>
+<%--  <script src="dynamic/body.js"></script>--%>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/apply.css">
 </head>
 <body>
 <div class="layout">
-  <%@ include file="/views/header.jsp" %>
-  <%@ include file="/views/macthInfo.jsp" %>
+  <%@ include file="/module/header.jsp" %>
+  <%@ include file="/module/macthInfo.jsp" %>
 </div>
 </body>

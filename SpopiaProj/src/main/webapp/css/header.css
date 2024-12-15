@@ -1,9 +1,37 @@
 header {
-    display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+    max-width: 1100px;  /* Set max width */
+    margin: 0 auto;     /* Center the layout */
+    width: 100%;        /* Ensure it takes up full available width */
+}
 
+header .main-menu-container {
+    display: flex;
+    justify-content: space-between; /* 좌우 요소 간 간격 */
+    align-items: center; /* 요소 수직 정렬 */
+    width: 100%; /* 부모 요소 전체 사용 */
+    max-width: 1200px; /* 최대 너비 제한 */
+}
+
+header .menu-left,
+header .menu-right {
+    display: flex;
+    align-items: center;
+}
+
+header .menu-left .logo img {
+    height: 50px; /* 로고 크기 조정 */
+}
+
+header .menu-right .search-box {
+    margin-right: 20px; /* 아이콘 간격 */
+}
+
+header .menu-right .calendar-icon,
+header .menu-right .my-page-icon {
+    margin-left: 10px; /* 아이콘 간격 */
 }
 
 /* 메인 메뉴 컨테이너 */
@@ -91,6 +119,9 @@ header {
     font-size: 18px; /* 글자 크기 18px */
     color: #555;
     border-top: 1px solid #ddd; /* 구분선 */
+    max-width: 1200px;  /* Set max width */
+    margin: 0 auto;     /* Center the layout */
+    width: 100%;        /* Ensure it takes up full available width */
 }
 
 .sports-menu span {

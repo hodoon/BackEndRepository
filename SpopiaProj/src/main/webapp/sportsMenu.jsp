@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/styles.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/header.css">
+<link rel="stylesheet" href="./css/header.css">
 
 <!-- 스포츠 메뉴가 들어가는 두 번째 줄 -->
 <div class="sports-menu">

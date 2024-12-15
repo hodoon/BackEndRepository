@@ -100,7 +100,7 @@ function createEventItem({ time, location, gender, isFull }) {
     const button = eventItem.querySelector("button");
     if (button && !isFull) {
         button.addEventListener("click", () => {
-            window.location.href = "views/apply.jsp"; // apply.jsp로 리다이렉트
+            window.location.href = "../apply.jsp"; // apply.jsp로 리다이렉트
         });
     }
 

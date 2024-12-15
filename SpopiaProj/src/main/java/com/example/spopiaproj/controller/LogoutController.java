@@ -8,20 +8,25 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/auth/logout")
+@WebServlet("/user/logout")
 public class LogoutController extends HttpServlet {
     // 로그아웃 기능 구현
-
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession(false);
-
-        if (session != null){
-            session.invalidate();
+        req.setCharacterEncoding("UTF-8");
+        HttpSession session = req.getSession();
+        if (session.getAttribute("isLogin").equals("true")) {
+            session.removeAttribute("isLogin");
+            session.removeAttribute("userEmail");
+            if (session.getAttribute("isAdmin") != null) {
+                session.removeAttribute("isAdmin");
+            }
+            System.out.println("Successfully logged out.");
+        } else {
+            System.out.println("You are not logged in.");
         }
-
-        resp.sendRedirect(req.getContextPath() + "/views/loginPage.jsp");
+        String contextPath = req.getContextPath();
+        resp.sendRedirect(contextPath + "/");
     }
 
     @Override
