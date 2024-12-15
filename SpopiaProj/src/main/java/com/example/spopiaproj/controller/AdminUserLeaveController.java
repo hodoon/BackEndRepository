@@ -17,7 +17,7 @@ public class AdminUserLeaveController extends HelloServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
-        String userEmail = req.getParameter("userEmail");
+        String userEmail = req.getParameter("leaveUser");
         if (userEmail == null){
             System.out.println("User Information Required");
             resp.sendRedirect(req.getContextPath() + "/admin-page");

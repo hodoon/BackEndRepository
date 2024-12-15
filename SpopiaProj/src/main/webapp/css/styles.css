@@ -248,6 +248,32 @@ section nav ul li {
   justify-content: space-between;
 }
 
+.select-group {
+  margin-bottom: 15px;
+}
+
+.select-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.select-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.select-group select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
 /*--- 관리자 ---*/
 .admin-container {
   width: 800px;

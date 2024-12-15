@@ -17,7 +17,6 @@ public class UserDto {
     private String userDob;
     private String userContact;
     private String userRole;
-    private String userPhone;
     private boolean isAdmin;
     private String userState;
     private String signupDate;

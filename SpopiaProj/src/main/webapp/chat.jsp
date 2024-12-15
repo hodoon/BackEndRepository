@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>카카오톡 클론</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/chat.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/chat.css">
 </head>
 <body>
 <div id="chat-container">
