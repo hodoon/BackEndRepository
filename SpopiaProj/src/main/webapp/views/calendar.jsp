@@ -11,9 +11,9 @@
 <body>
 <div class="layout">
   <!-- 헤더 파일 포함 -->
-  <%@ include file="/views/header.jsp" %>
+  <%@ include file="header.jsp" %>
   <!-- 캘린더 파일 포함 -->
-  <%@ include file="/views/calPage.jsp" %>
+  <%@ include file="calPage.jsp" %>
 </div>
 </body>
 </html>

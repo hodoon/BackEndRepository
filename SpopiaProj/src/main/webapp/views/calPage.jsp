@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/apply.css">
+
 <div class="calPage">
   <div class="pageLeft">
     <div class="calContent">
@@ -43,10 +45,11 @@
   </div>
   <div class="pageRight">
     <div class="matchInfo">
-      <a>매치정보</a>
+      <%@include file="macthInfo.jsp"%>
     </div>
     <div class="userChat">
       <a>채팅</a>
+      <%-- <%@include file="chat.jsp"%> --%>
     </div>
   </div>
 </div>
