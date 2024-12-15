@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <title>calendar</title>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/cal.css">
+  <link rel="stylesheet" href="../css/cal.css">
   <script src="${pageContext.request.contextPath}/dynamic/cal.js" defer></script>
 </head>
 <body>

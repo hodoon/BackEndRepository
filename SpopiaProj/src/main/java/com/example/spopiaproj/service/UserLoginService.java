@@ -10,7 +10,7 @@ public class UserLoginService {
     public boolean loginUser(String userEmail, String userPw){
         UserDto userInfo = userService.getUserInfoByEmail(userEmail);
         try {
-            if(!userInfo.getUserState().equals("active")){
+            if(!userInfo.getUserState().equals("ACTIVE")){
                 System.out.println("!!! User is not active !!!");
                 return false;
             } else {
@@ -26,7 +26,7 @@ public class UserLoginService {
             }
         }catch (NullPointerException e){
             e.printStackTrace();
-            System.out.println("!!! User not found !!!");
+            System.out.println("!!! User not found !!!" );
             return false;
         } catch (IllegalArgumentException e){
             e.printStackTrace();

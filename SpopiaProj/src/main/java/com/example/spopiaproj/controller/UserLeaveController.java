@@ -3,11 +3,13 @@ package com.example.spopiaproj.controller;
 import com.example.spopiaproj.HelloServlet;
 import com.example.spopiaproj.service.UserService;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+@WebServlet("/user/leave")
 public class UserLeaveController extends HelloServlet {
     UserService userService = new UserService();
 

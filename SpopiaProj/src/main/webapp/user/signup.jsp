@@ -62,6 +62,13 @@
                 <label for="userDob"></label>
                 <input type="date" id="userDob" name="userDob"  placeholder="생년원일을 입력하세요" required>
             </div>
+            <div class="select-group">
+                <label for="userGender"></label>
+                <select id="userGender" name="userGender" required>
+                    <option value="M">남성</option>
+                    <option value="F">여성</option>
+                </select>
+            </div>
             <div class="input-group">
                 <label for="userContact"></label>
                 <input type="text" id="userContact" name="userContact" placeholder="연락처를 입력하세요" required>

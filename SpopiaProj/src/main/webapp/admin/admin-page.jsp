@@ -1,94 +1,141 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page - User Management</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/styles.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/admin.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>관리자 페이지</title>
+    <style>
+        /*-----관리자 페이지 ------*/
+        .admin-btn {
+            background-color: #999999;
+            color: white;
+            border: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 160px;
+            height: 38px;
+            padding: 10px;
+        }
+
+        .admin-btn:active {
+            background-color: #333; /* 버튼을 클릭했을 때 배경색을 진한 회색으로 설정 */
+            transform: scale(1.1); /* 버튼을 클릭했을 때 버튼의 크기를 10% 증가시킴 */
+        }
+        .admin-container {
+            font-family: 'Roboto', sans-serif; /* 폰트 설정 */
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .admin-table th, .admin-table td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd; /* 테두리 설정 */
+        }
+
+        .admin-table th {
+            background-color: #f6f6f6; /* 헤더 배경색 설정 */
+            color: #333; /* 헤더 글자색 설정 */
+            white-space: nowrap; /* 긴 글자를 한 줄로 유지 */
+        }
+
+        .admin-table tr:nth-child(even) {
+            background-color: #f2f2f2; /* 짝수 행 배경색 설정 */
+        }
+
+        .admin-section {
+            margin-bottom: 30px;
+        }
+
+        .admin-section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .admin-action-button {
+            white-space: nowrap; /* 긴 글자를 한 줄로 유지 */
+            background-color: #007aff; /* 버튼 배경색 설정 */
+            color: white; /* 버튼 글자색 설정 */
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        /*-----관리자 페이지 ------*/
+    </style>
 </head>
+<script>
+    const chatWinOpen = (chatId) => {
+        window.open("../chatclient/ChatWindow.jsp?chatId=" + chatId, "", "width=344, height=463");
+    }
+    const ifNotAdmin = () => {
+        alert('접근 실패! 권한을 확인하세요.');
+        window.location.href = '/';
+    }
+    const confirmLeave = (leaveEmail) => {
+        if (confirm('정말로 탈퇴 처리하시겠습니까?')) {
+            window.location.href = '/admin/user-leave?leaveUser=' + leaveEmail;
+        }
+    }
+    <c:if test="${empty sessionScope.isAdmin}">
+    ifNotAdmin();
+    </c:if>
+</script>
 <body>
-<header class="layout">
-    <%@ include file="/module/header.jsp" %>
-</header>
-<main class="layout">
-    <div class="admin-container">
-        <h1>관리자 페이지 - 사용자 관리</h1>
-        <!-- 사용자 목록 -->
-        <section class="user-list">
-            <h2>사용자 목록</h2>
-            <table>
-                <thead>
+<%@ include file="../module/header.jsp"%>
+
+<div class="admin-container">
+    <h1 class="admin-title">관리자 페이지</h1> <!-- 회원 관리 섹션 -->
+    <div class="admin-section">
+        <h2 class="admin-section-title">회원 관리</h2>
+        <table class="admin-table">
+            <thead>
+            <tr>
+                <th>회원 번호</th>
+                <th>이메일</th>
+                <th>닉네임</th>
+                <th>이름</th>
+                <th>상태</th>
+                <th>조작</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="user" items="${userList}">
                 <tr>
-                    <th>이메일</th>
-                    <th>이름</th>
-                    <th>닉네임</th>
-                    <th>성별</th>
-                    <th>생년월일</th>
-                    <th>전화번호</th>
-                    <th>관리</th>
+                    <td>${user.userNo}</td>
+                    <td>${user.userEmail}</td>
+                    <td>${user.userNick}</td>
+                    <td>${user.userName}</td>
+                    <td>${user.userRole}</td>
+                    <c:if var="userState" test="${user.userState eq 'ACTIVE'}">
+                        <td>활성</td>
+                    </c:if>
+                    <c:if var="userState" test="${user.userState eq 'INACTIVE'}">
+                        <td>탈퇴</td>
+                    </c:if>
+                    <td>
+                        <c:if var="isActive" test="${user.userState eq 'ACTIVE'}">
+                            <div class="admin-actions">
+                                <button type="button" class="admin-action-button" onclick="confirmLeave('${user.userEmail}')">탈퇴</button>
+                            </div>
+                        </c:if>
+                    </td>
                 </tr>
-                </thead>
-                <tbody>
-                <!-- 사용자 데이터 반복 출력 -->
-                <c:forEach var="user" items="${userList}">
-                    <tr>
-                        <td>${user.email}</td>
-                        <td>${user.name}</td>
-                        <td>${user.nickname}</td>
-                        <td>${user.sex}</td>
-                        <td>${user.birthDate}</td>
-                        <td>${user.phone}</td>
-                        <td>
-                            <form action="${pageContext.request.contextPath}/admin/editUser" method="GET" style="display: inline;">
-                                <input type="hidden" name="userEmail" value="${user.email}">
-                                <button type="submit" onclick="return confirm('사용자를 수정하시겠습니까?')">수정</button>
-                            </form>
-                            <form action="${pageContext.request.contextPath}/admin/deleteUser" method="GET" style="display:inline;">
-                                <input type="hidden" name="userEmail" value="${user.email}">
-                                <button type="submit" onclick="return confirm('사용자를 삭제하시겠습니까?')">삭제</button>
-                            </form>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- 사용자 추가 -->
-        <section class="add-user">
-            <h2>사용자 추가</h2>
-            <form id="addUserForm" action="${pageContext.request.contextPath}/admin/addUser" method="POST">
-                <label for="userEmail">이메일:</label>
-                <input type="email" id="userEmail" name="userEmail" required>
-
-                <label for="userPassword">비밀번호:</label>
-                <input type="password" id="userPassword" name="userPassword" required>
-
-                <label for="userName">이름:</label>
-                <input type="text" id="userName" name="userName" required>
-
-                <label for="userNickname">닉네임:</label>
-                <input type="text" id="userNickname" name="userNickname" required>
-
-                <label for="userSex">성별:</label>
-                <select id="userSex" name="userSex" required>
-                    <option value="M">남성</option>
-                    <option value="F">여성</option>
-                </select>
-
-                <label for="userBirth">생년월일:</label>
-                <input type="date" id="userBirth" name="userBirth" required>
-
-                <label for="userTel">전화번호:</label>
-                <input type="text" id="userTel" name="userTel" required>
-
-                <button type="submit">추가</button>
-            </form>
-        </section>
+            </c:forEach>
+            <!-- 다른 회원들의 정보도 동일한 형식으로 추가 -->
+            </tbody>
+        </table>
     </div>
-</main>
+</div>
 </body>
 </html>

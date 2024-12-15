@@ -68,7 +68,6 @@ public class UserService {
                     userDto.setUserDob(rs.getString("userDob"));
                     userDto.setUserContact(rs.getString("userContact"));
                     userDto.setUserRole(rs.getString("userRole"));
-                    userDto.setUserPhone(rs.getString("userPhone"));
                     userDto.setAdmin(rs.getBoolean("isAdmin"));
                     userDto.setUserState(rs.getString("userState"));
                     userDto.setSignupDate(rs.getString("signupDate"));
@@ -198,6 +197,7 @@ public class UserService {
         pstmt.setString(2, userDto.getUserNick());
         pstmt.setString(3, userDto.getUserDob());
         pstmt.setString(4, userDto.getUserContact());
+        pstmt.setString(5, userDto.getUserEmail());
         pstmt.executeUpdate();
         conn.close();
         pstmt.close();
@@ -229,5 +229,47 @@ public class UserService {
         pstmt.close();
         rs.close();
         return usersArrayList;
+    }
+
+    public Object getUserNick(String userEmail) {
+        try(Connection conn = DBConn.getDBConn()) {
+            String query = "SELECT userNick FROM users WHERE userEmail = ?";
+            try(PreparedStatement pstmt = conn.prepareStatement(query)){
+                pstmt.setString(1, userEmail);
+                ResultSet rs = pstmt.executeQuery();
+                if(rs.next()){
+                    String userNick = rs.getString("userNick");
+                    rs.close();
+                    return userNick;
+                } else {
+                    rs.close();
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Fail to Connect DB", e);
+        }
+    }
+
+    public Object getUserRole(String userEmail) {
+        try(Connection conn = DBConn.getDBConn()) {
+            String query = "SELECT userRole FROM users WHERE userEmail = ?";
+            try(PreparedStatement pstmt = conn.prepareStatement(query)){
+                pstmt.setString(1, userEmail);
+                ResultSet rs = pstmt.executeQuery();
+                if(rs.next()){
+                    String userRole = rs.getString("userRole");
+                    rs.close();
+                    return userRole;
+                } else {
+                    rs.close();
+                    return null;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Fail to Connect DB", e);
+        }
     }
 }

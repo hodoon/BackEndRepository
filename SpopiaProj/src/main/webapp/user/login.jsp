@@ -2,9 +2,7 @@
 <html>
 <head>
     <title>로그인페이지</title>
-
 </head>
-
 <style>
   .login-container {
     justify-content: center;
@@ -111,8 +109,8 @@
     <section class="main3-login">
       <form action="${pageContext.request.contextPath}/user/loginProc" method="post">
         <div class="input-group">
-          <label for="userId" class="login-t1"></label>
-          <input type="text" id="userId" name="userId" oninput="typeOnlyEng(this)" placeholder="아이디를 입력하세요" required>
+          <label for="userEmail" class="login-t1"></label>
+          <input type="text" id="userEmail" name="userEmail" oninput="typeOnlyEng(this)" placeholder="아이디를 입력하세요" required>
         </div>
 
         <div class="input-group">

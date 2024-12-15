@@ -18,7 +18,7 @@
       <!-- 검색바 (맨 오른쪽) -->
       <div class="menu-right">
         <div class="search-box">
-          <form action="../views" method="post">
+          <form action="../calendar" method="post">
             <button class="search-btn" type="submit">
               <i class="fas fa-search"></i>
             </button>

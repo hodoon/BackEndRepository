@@ -7,21 +7,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet("/checkLogin")
 public class CheckLoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false); // 기존 세션 가져오기, 없으면 null
-        String userName = (String) session.getAttribute("userName");
-        String userRole = (String) session.getAttribute("userRole");
+        if (session != null) {
+            String userEmail = (String) session.getAttribute("userEmail");
+            String userRole = (String) session.getAttribute("userRole");
 
-        if (userName != null) {
-            // 세션에 로그인 정보가 있는 경우 마이페이지로 이동
-            response.sendRedirect(request.getContextPath() + "/user/myPage.jsp");
-        } else {
-            // 세션에 로그인 정보가 없는 경우 로그인 페이지로 이동
-            response.sendRedirect(request.getContextPath() + "/user/login.jsp");
+            if ("ADMIN".equals(userRole)) {
+                // Redirect to admin page for admin users
+                response.sendRedirect(request.getContextPath() + "/admin-page");
+                return;
+            }
+
+            if (userEmail != null) {
+                // Redirect to user myPage for logged-in users
+                response.sendRedirect(request.getContextPath() + "/user/my-page");
+                return;
+            }
         }
+
+        // Redirect to login page for unauthenticated users
+        response.sendRedirect(request.getContextPath() + "/user/login");
     }
 }
