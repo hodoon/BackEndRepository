@@ -6,11 +6,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>JSP - Hello World</title>
-	<link rel="stylesheet" type="text/css" href="./css/footer.css">
 </head>
 <body>
 <!-- Your existing layout -->
 <footer class="layout">
+	<link rel="stylesheet" type="text/css" href="../css/footer.css">
 	<div class="footer-sections">
 		<!-- 메인 -->
 		<div class="footer-section">

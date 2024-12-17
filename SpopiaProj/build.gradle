@@ -20,6 +20,9 @@ targetCompatibility = '1.8'
 tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
 }
+war {
+  webAppDirName = 'src/main/webapp'  // 웹 애플리케이션의 기본 디렉토리 설정
+}
 
 dependencies {
   compileOnly('javax.servlet:javax.servlet-api:4.0.1')

@@ -39,45 +39,6 @@ function generateWeekDates(startDate) {
     }
 }
 
-// XML 데이터를 JSON으로 변환
-function xmlToJson(xml) {
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(xml, "application/xml");
-    const items = xmlDoc.getElementsByTagName("row");
-    const result = [];
-
-    for (let i = 0; i < items.length; i++) {
-        const item = items[i];
-        result.push({
-            time: item.getElementsByTagName("RESVE_BGN_TIME")[0]?.textContent || "시간 미정",
-            location: item.getElementsByTagName("MINCLASSNM")[0]?.textContent || "장소 미정",
-            gender: "남녀모두", // 성별은 기본값
-        });
-    }
-
-    return result;
-}
-
-// API 데이터 가져오기
-async function fetchEventsFromAPI(region = null) {
-    const apiUrl =
-        "http://openapi.seoul.go.kr:8088/517474446f68726f31313165546a7562/xml/ListPublicReservationSport/1/5/%ED%92%8B%EC%82%B4%EC%9E%A5";
-    try {
-        const response = await fetch(apiUrl);
-        const xml = await response.text(); // XML 형식으로 받아오기
-        const data = xmlToJson(xml); // XML을 JSON으로 변환
-
-        // 지역별 필터링
-        if (region) {
-            return data.filter((event) => event.location.includes(region));
-        }
-        return data;
-    } catch (error) {
-        console.error("API 데이터를 불러오는 데 실패했습니다:", error);
-        return [];
-    }
-}
-
 // 이벤트 생성
 function createEventItem({ time, location, gender, isFull }) {
     const eventItem = document.createElement("div");
