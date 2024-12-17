@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Layout Example</title>
-  <link rel="stylesheet" href="./css/body.css">
-  <script src="./dynamic/body.js"></script>
+
 </head>
 <body>
+<link rel="stylesheet" href="./css/body.css">
+<script src="./dynamic/body.js"></script>
 <div class="container">
   <div class="dateSlider">
     <button class="prevBtn">&lt;</button>
