@@ -40,7 +40,7 @@
     </div>
     <div class="userChat">
       <a>채팅</a>
-      <%-- <%@include file="chat.jsp"%> --%>
+       <%@include file="chat.jsp"%>
     </div>
   </div>
 </div>
