@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hrowlxb
-  Date: 24. 12. 15.
-  Time: 오후 9:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 
+<link rel="stylesheet" href="../css/apply.css">
 <div class="matchData">
   <div class="matchHeader"><p>구장 사진</p></div>
   <div class="matchBody">
