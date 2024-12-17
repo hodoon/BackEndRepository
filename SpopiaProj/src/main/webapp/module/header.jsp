@@ -26,7 +26,7 @@
           </form>
         </div>
         <div class="calendar-icon">
-          <a href="../calendar">
+          <a href="../user/cal-page">
             <img src="../images/ic_calendar.svg" alt="Calendar">
           </a>
         </div>
